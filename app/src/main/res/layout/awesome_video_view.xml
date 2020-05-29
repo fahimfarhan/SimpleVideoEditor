@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.fahimfarhan.simplevideoeditor.customview.GLGestureView
+        android:id="@+id/glGestureView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        />
+
+    <com.fahimfarhan.simplevideoeditor.customview.SimpleCropView
+        android:id="@+id/cropOverlayView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/transparent"
+        app:minimumSide="60dp"
+        app:resizeCornerDrawable="@drawable/ic_fiber_circle_white_24dp"
+        app:moveCornerDrawable="@drawable/ic_fiber_circle_white_24dp"
+        app:cornerColor="@color/white"
+        app:edgeColor="@color/colorPrimary"
+        app:outsideCropColor="@color/transparent_black_70"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cropOverlayCornerSize="20dp"
+        />
+</merge>

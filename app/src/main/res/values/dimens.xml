@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="crop_area_renderer_edge_size">32dp</dimen>
+    <dimen name="crop_area_renderer_edge_thickness">2dp</dimen>
+</resources>

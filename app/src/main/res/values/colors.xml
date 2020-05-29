@@ -3,4 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="crop_area_renderer_outer_color">#7f000000</color>
+    <color name="crop_area_renderer_edge_color">#ffffffff</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent_black_70">#70000000</color>
 </resources>

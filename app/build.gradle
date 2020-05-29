@@ -49,6 +49,7 @@ dependencies {
     implementation "androidx.core:core-ktx:1.2.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.exoplayer:exoplayer:2.11.1'
+    implementation "androidx.recyclerview:recyclerview:1.2.0-alpha03"
 }
 repositories {
     mavenCentral()
