@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SImpleVideoEditor</string>
+    <string name="continue_to_next">Continue</string>
+    <string name="trim_video_duration">Video trim duration</string>
+    <string name="toast_cannot_retrieve_selected_video">toast_cannot_retrieve_selected_video</string>
+    <string name="label_select_video">label_select_video</string>
 </resources>

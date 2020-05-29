@@ -1,0 +1,42 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/trimConstraintLayout"
+    app:layout_constraintTop_toBottomOf="@id/editOptionsRecyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="invisible"
+    >
+    <idv.luchafang.videotrimmer.VideoTrimmerView
+        android:id="@+id/videoTrimmerView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:vtv_window_bar_width="10dp"
+        app:vtv_window_border_color="@android:color/white"
+        app:vtv_window_border_width="2dp"
+        app:vtv_window_left_bar="@drawable/trimmer_left_bar"
+        app:vtv_window_right_bar="@drawable/trimmer_right_bar"
+        />
+    <TextView
+        android:id="@+id/trimVideoDuration"
+        app:layout_constraintTop_toBottomOf="@id/videoTrimmerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/trim_video_duration"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/durationView"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="30 Sec"
+        app:layout_constraintTop_toBottomOf="@id/trimVideoDuration"
+        android:layout_marginBottom="12dp"
+        android:textColor="@color/textColorPrimary"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

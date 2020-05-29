@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/mini_padding"
+    >
+
+    <com.fahimfarhan.simplevideoeditor.customview.RoundCornerImageView
+        android:id="@+id/videoThumbnailPreview"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:id="@+id/filterName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/videoThumbnailPreview"
+        android:gravity="center_horizontal"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        tools:text="monochrome"
+        android:textColor="@color/textColorPrimary"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

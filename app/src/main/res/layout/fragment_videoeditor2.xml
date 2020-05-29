@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/mainBackground">
+    <include layout="@layout/toolbar"/>
+
+    <TextView
+        android:id="@+id/kontinue"
+        app:layout_constraintTop_toTopOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="@dimen/card_padding_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/continue_to_next"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        />
+
+    <com.fahimfarhan.simplevideoeditor.customview.AwesomeVideoView
+        android:id="@+id/awesomeVideoView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
+        android:padding="@dimen/card_padding_regular"
+        />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/editOptionsRecyclerView"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <include layout="@layout/video_layout_filter"/>
+    <include layout="@layout/video_layout_format"/>
+    <include layout="@layout/video_layout_waiting"/>
+    <include layout="@layout/video_layout_trim"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/filterConstraintLayout"
+    app:layout_constraintTop_toBottomOf="@id/editOptionsRecyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="invisible">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/filterSeekBarLayout"
+        app:layout_constraintBottom_toTopOf="@id/filterOptionsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="invisible"
+        >
+
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:text="Adjust filter"
+            android:padding="@dimen/list_padding"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/filterSeekBar"
+            android:textColor="@color/textColorPrimary"
+            />
+
+        <SeekBar
+            android:id="@+id/filterSeekBar"
+            android:layout_marginStart="@dimen/list_padding"
+            android:layout_marginEnd="@dimen/list_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/filterOptionsRecyclerView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/list_padding"
+        android:clipToPadding="false"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/list_padding"
+    android:layout_margin="@dimen/list_padding"
+    >
+
+    <ImageButton
+        android:id="@+id/optionLogo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="@dimen/largeMargin"
+        android:layout_height="@dimen/largeMargin"
+        android:background="@drawable/round_edit_option_notselected"
+        />
+
+    <TextView
+        android:id="@+id/optionName"
+        app:layout_constraintTop_toBottomOf="@id/optionLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColorPrimary"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

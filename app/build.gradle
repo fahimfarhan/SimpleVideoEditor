@@ -48,8 +48,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation "androidx.core:core-ktx:1.2.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // exoplayer
     implementation 'com.google.android.exoplayer:exoplayer:2.11.1'
+    // recyclerview
     implementation "androidx.recyclerview:recyclerview:1.2.0-alpha03"
+    // videotrimmer ui
+    implementation 'com.github.freddyfang:android-video-trimmer:v1.0.0'
 }
 repositories {
     mavenCentral()

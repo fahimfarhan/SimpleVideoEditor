@@ -2,4 +2,9 @@
 <resources>
     <dimen name="crop_area_renderer_edge_size">32dp</dimen>
     <dimen name="crop_area_renderer_edge_thickness">2dp</dimen>
+    <dimen name="mini_padding">4dp</dimen>
+    <dimen name="list_padding">8dp</dimen>
+    <dimen name="largeMargin">64dp</dimen>
+    <dimen name="image_edit_options_size">60dp</dimen>
+    <dimen name="card_padding_regular">16dp</dimen>
 </resources>
