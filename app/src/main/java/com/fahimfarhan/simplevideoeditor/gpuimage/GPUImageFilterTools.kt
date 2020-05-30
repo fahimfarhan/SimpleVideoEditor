@@ -121,17 +121,17 @@ object GPUImageFilterTools {
             ImageFilterType.CONTRAST -> GPUImageContrastFilter(2.0f)
             ImageFilterType.GAMMA -> GPUImageGammaFilter(2.0f)
             ImageFilterType.INVERT -> GPUImageColorInvertFilter()
-            ImageFilterType.PIXELATION -> GPUImagePixelationFilter()
+            ImageFilterType.PIXELATION -> GPUImagePixelationFilter(0.2f)
             ImageFilterType.HUE -> GPUImageHueFilter(90.0f)
-            ImageFilterType.BRIGHTNESS -> GPUImageBrightnessFilter(1.5f)
+            ImageFilterType.BRIGHTNESS -> GPUImageBrightnessFilter(.8f)
             ImageFilterType.GRAYSCALE -> GPUImageGrayscaleFilter()
             ImageFilterType.SEPIA -> GPUImageSepiaToneFilter()
-            ImageFilterType.SHARPEN -> GPUImageSharpenFilter()
+            ImageFilterType.SHARPEN -> GPUImageSharpenFilter(0.8f)
 //            ImageFilterType.SOBEL_EDGE_DETECTION -> GPUImageSobelEdgeDetectionFilter()
 //            ImageFilterType.THRESHOLD_EDGE_DETECTION -> GPUImageThresholdEdgeDetectionFilter()
 //            ImageFilterType.THREE_X_THREE_CONVOLUTION -> GPUImage3x3ConvolutionFilter()
 //            ImageFilterType.EMBOSS -> GPUImageEmbossFilter()
-            ImageFilterType.POSTERIZE -> GPUImagePosterizeFilter()
+            ImageFilterType.POSTERIZE -> GPUImagePosterizeFilter(2)
             ImageFilterType.FILTER_GROUP -> GPUImageFilterGroup(
                     listOf(
                             GPUImageContrastFilter(),
@@ -139,17 +139,17 @@ object GPUImageFilterTools {
                             GPUImageGrayscaleFilter()
                     )
             )
-            ImageFilterType.SATURATION -> GPUImageSaturationFilter(1.0f)
-            ImageFilterType.EXPOSURE -> GPUImageExposureFilter(0.0f)
+            ImageFilterType.SATURATION -> GPUImageSaturationFilter(0.8f)
+            ImageFilterType.EXPOSURE -> GPUImageExposureFilter(0.5f)
             ImageFilterType.HIGHLIGHT_SHADOW -> GPUImageHighlightShadowFilter(
-                    0.0f,
-                    1.0f
+                    0.2f,
+                    0.8f
             )
             ImageFilterType.MONOCHROME -> GPUImageMonochromeFilter(
                     1.0f, floatArrayOf(0.6f, 0.45f, 0.3f, 1.0f)
             )
-            ImageFilterType.OPACITY -> GPUImageOpacityFilter(1.0f)
-            ImageFilterType.RGB -> GPUImageRGBFilter(1.0f, 1.0f, 1.0f)
+            ImageFilterType.OPACITY -> GPUImageOpacityFilter(0.8f)
+            ImageFilterType.RGB -> GPUImageRGBFilter(0.2f, 0.7f, 0.5f)
             ImageFilterType.WHITE_BALANCE -> GPUImageWhiteBalanceFilter(
                     5000.0f,
                     0.0f
@@ -266,7 +266,7 @@ object GPUImageFilterTools {
 //            ImageFilterType.LOOKUP_AMATORKA -> GPUImageLookupFilter().apply {
 //                bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.lookup_amatorka)
 //            }
-            ImageFilterType.GAUSSIAN_BLUR -> GPUImageGaussianBlurFilter()
+            ImageFilterType.GAUSSIAN_BLUR -> GPUImageGaussianBlurFilter(0.5f)
             ImageFilterType.CROSSHATCH -> GPUImageCrosshatchFilter()
             ImageFilterType.BOX_BLUR -> GPUImageBoxBlurFilter()
             ImageFilterType.CGA_COLORSPACE -> GPUImageCGAColorspaceFilter()
@@ -278,7 +278,7 @@ object GPUImageFilterTools {
 //            ImageFilterType.SMOOTH_TOON -> GPUImageSmoothToonFilter()
             ImageFilterType.BULGE_DISTORTION -> GPUImageBulgeDistortionFilter()
 //            ImageFilterType.GLASS_SPHERE -> GPUImageGlassSphereFilter()
-            ImageFilterType.HAZE -> GPUImageHazeFilter()
+            ImageFilterType.HAZE -> GPUImageHazeFilter(0.2f, 0.2f)  // todo: might not work. check
 //            ImageFilterType.LAPLACIAN -> GPUImageLaplacianFilter()
 //            ImageFilterType.NON_MAXIMUM_SUPPRESSION -> GPUImageNonMaximumSuppressionFilter()
             ImageFilterType.SPHERE_REFRACTION -> GPUImageSphereRefractionFilter()
@@ -292,7 +292,7 @@ object GPUImageFilterTools {
             ImageFilterType.ZOOM_BLUR -> GPUImageZoomBlurFilter()
 //            ImageFilterType.TRANSFORM2D -> GPUImageTransformFilter()
             ImageFilterType.SOLARIZE -> GPUImageSolarizeFilter()
-            ImageFilterType.VIBRANCE -> GPUImageVibranceFilter()
+            ImageFilterType.VIBRANCE -> GPUImageVibranceFilter(0.8f)
             else -> GPUImageBrightnessFilter(1f)  // so by default, it should get the exact same image...
         }
     }

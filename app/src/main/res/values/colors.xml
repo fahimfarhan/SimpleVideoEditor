@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#5DAC81</color>
+    <color name="colorPrimaryDark">#4F916D</color>
+    <color name="colorAccent">#5DAC81</color>
 
     <color name="crop_area_renderer_outer_color">#7f000000</color>
     <color name="crop_area_renderer_edge_color">#ffffffff</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="transparent_black_70">#70000000</color>
-    <color name="textColorPrimary">#009688</color>
+    <color name="textColorPrimary">#000000</color>
     <color name="edit_option_bg_color">#F4F5F6</color>
     <color name="mainBackground">#FFFFFF</color>
     <color name="videoCropNotSelected">#E7ECF1</color>
