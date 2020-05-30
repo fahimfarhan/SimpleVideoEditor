@@ -19,7 +19,7 @@
         android:text="@string/continue_to_next"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        android:textSize="18dp"
+        android:textSize="18sp"
         />
 
     <com.fahimfarhan.simplevideoeditor.customview.AwesomeVideoView

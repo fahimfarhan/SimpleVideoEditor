@@ -3,6 +3,7 @@
     <color name="colorPrimary">#5DAC81</color>
     <color name="colorPrimaryDark">#4F916D</color>
     <color name="colorAccent">#5DAC81</color>
+    <color name="background">#1C1C1C</color>
 
     <color name="crop_area_renderer_outer_color">#7f000000</color>
     <color name="crop_area_renderer_edge_color">#ffffffff</color>
