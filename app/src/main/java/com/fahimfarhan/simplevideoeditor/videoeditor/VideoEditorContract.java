@@ -19,8 +19,9 @@ public interface VideoEditorContract {
         VideoTrimmerView.OnSelectedRangeChangedListener getOnSelectedRangeChangedListener();
         ConstraintLayout getFilterSeekBarLayout();
         AwesomeVideoView getAwesomeVideoView();
-        ConstraintLayout getWaitingConstraintLayout();
-        boolean isWaitingForVideoConversion();
+        VideoEditorFragment2.CallBack getOnCallBack();
+        void startWaitingFragment();
+        void stopWaitingFragment();
     }
 
     interface Presenter {

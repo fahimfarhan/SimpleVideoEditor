@@ -74,11 +74,6 @@ public class VideoEditorPresenter implements VideoEditorContract.Presenter {
             public void onFilterChange(FilterType selectedFilterType) {
                 changeFilter(selectedFilterType);
             }
-
-            @Override
-            public boolean isWaitingForConversion() {
-                return videoEditContractView.isWaitingForVideoConversion();
-            }
         };
     }
 
@@ -87,7 +82,7 @@ public class VideoEditorPresenter implements VideoEditorContract.Presenter {
     @Override
     public void startConversion() {
         // -1. make waitingLayout visible
-        videoEditContractView.getWaitingConstraintLayout().setVisibility(VISIBLE);
+        videoEditContractView.startWaitingFragment();
         // 0. mp4converter code
         if (videoEditModel.sourcePath == null) {
             try {
@@ -175,18 +170,13 @@ public class VideoEditorPresenter implements VideoEditorContract.Presenter {
                     public void onCompleted() {
                         Log.d(TAG, "onCompleted()");
                         activity.runOnUiThread(() -> {
-                            videoEditContractView.getWaitingConstraintLayout().setVisibility(GONE);
+                            videoEditContractView.stopWaitingFragment();
                             Toast.makeText(activity, "codec complete path = " + destPath, Toast.LENGTH_SHORT).show();
                             Log.e(TAG, "codec complete path = " + destPath);
                         });
 
-                        try{
-                            // I need the try catch cz the Activity may not be an instance of VideoEditorActivity
-                            // todo: what should be the appropriate way to write this code segment? o.O
-                            MainActivity mainActivity = (MainActivity) activity;
-                            mainActivity.onSuccess(destPath);
-                        }catch (Exception x){
-                            x.printStackTrace();
+                        if(videoEditContractView.getOnCallBack()!=null){
+                            videoEditContractView.getOnCallBack().onVideoConversionSuccess(destPath);
                         }
                     }
 
@@ -194,14 +184,14 @@ public class VideoEditorPresenter implements VideoEditorContract.Presenter {
                     public void onCanceled() {
                         Log.d(TAG, "onCanceled");
                         Toast.makeText(activity, "videoProcessing onCanceled", Toast.LENGTH_SHORT).show();
-                        videoEditContractView.getWaitingConstraintLayout().setVisibility(GONE);
+                        videoEditContractView.stopWaitingFragment();
                     }
 
                     @Override
                     public void onFailed(Exception exception) {
                         Log.e(TAG, "onFailed()", exception);
                         Toast.makeText(activity, "videoProcessing onFailure", Toast.LENGTH_SHORT).show();
-                        videoEditContractView.getWaitingConstraintLayout().setVisibility(GONE);
+                        videoEditContractView.stopWaitingFragment();
                     }
                 });
 

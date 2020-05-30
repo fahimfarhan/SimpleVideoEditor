@@ -61,7 +61,6 @@ public class FilterOptionsAdapter extends RecyclerView.Adapter<FilterOptionsAdap
         }
         holder.videoThumbnailPreview.setImageBitmap(thumbnail[position]);
         holder.itemView.setOnClickListener(v -> {
-            if(filterChangeListener.isWaitingForConversion()) { return; }
             filterChangeListener.onFilterChange(listFilters.get(position).first);
             changeTextColor(holder);
         });
@@ -95,6 +94,5 @@ public class FilterOptionsAdapter extends RecyclerView.Adapter<FilterOptionsAdap
 
     public interface FilterChangeListener{
         void onFilterChange(FilterType selectedFilterType);
-        boolean isWaitingForConversion();
     }
 }

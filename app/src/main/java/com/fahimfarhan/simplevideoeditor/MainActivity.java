@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fahimfarhan.simplevideoeditor.mp4composer.PathUtil;
+import com.fahimfarhan.simplevideoeditor.start.StartFragment;
 import com.fahimfarhan.simplevideoeditor.videoeditor.VideoEditorFragment2;
 
 import java.net.URISyntaxException;
@@ -30,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_VIDEO_TRIMMER = 0x01;
     private FrameLayout baseFrameLayout;
     private FragmentManager fragmentManager;
+    private VideoEditorFragment2.CallBack callBack = new VideoEditorFragment2.CallBack() {
+        @Override
+        public void onVideoConversionSuccess(String destPath) {
+            MainActivity.this.onSuccess(destPath);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 if (selectedUri != null) {
                     VideoEditorFragment2 videoEditorFragment2 = new VideoEditorFragment2();
                     videoEditorFragment2.setSelectedVideoUri(selectedUri);
+                    videoEditorFragment2.setOnCallBack(callBack);
                     String path = null;
                     try {
                         path = PathUtil.getPath(MainActivity.this, selectedUri);
@@ -143,10 +151,9 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         int entryCount = getSupportFragmentManager().getBackStackEntryCount();
         Log.e(TAG, "entryCount = "+entryCount);
-        if(entryCount > 1) {
+        if(entryCount > 0) {
             getSupportFragmentManager().popBackStack();
         } else {
-//           super.onBackPressed();
             finish();
         }
     }
@@ -164,5 +171,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSuccess(String destPath) {
         // todo: use this dest path to pass it into your next fragment/activity, say videoPlayerFragment/Activity
+        Log.e(TAG, "destPath = "+destPath);
+        fragmentManager.popBackStack();
+
+        StartFragment startFragment = new StartFragment();
+        startFragment.setVideoPath(destPath);
+
+        loadFragment(fragmentManager, R.id.baseFrameLayout, startFragment, StartFragment.TAG);
     }
 }

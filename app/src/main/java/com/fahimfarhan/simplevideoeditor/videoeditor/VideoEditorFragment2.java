@@ -23,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,7 +53,6 @@ public class VideoEditorFragment2 extends Fragment implements VideoEditorContrac
     private ConstraintLayout effectConstraintLayout;
     private ConstraintLayout formatConstraintLayout;
     private ConstraintLayout filterSeekBarLayout;
-    private ConstraintLayout waitingConstraintLayout;
 
     private SeekBar filterSeekBar;
 
@@ -68,6 +68,8 @@ public class VideoEditorFragment2 extends Fragment implements VideoEditorContrac
 
     private Drawable videoCropSelected;
     private Drawable videoCropNotSelected;
+
+    private CallBack onCallBack;
 
 
     private final VideoTrimmerView.OnSelectedRangeChangedListener onSelectedRangeChangedListener = new VideoTrimmerView.OnSelectedRangeChangedListener() {
@@ -91,7 +93,6 @@ public class VideoEditorFragment2 extends Fragment implements VideoEditorContrac
         }
     };
 
-    private EditOptionsAdapter.WaitingForConversionListener waitingForConversionListener = this::isWaitingForVideoConversion;
 
     @Nullable
     @Override
@@ -130,7 +131,7 @@ public class VideoEditorFragment2 extends Fragment implements VideoEditorContrac
         this.editOptionsRecyclerView.setHasFixedSize(true);
         LinearLayoutManager editOptionsLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         this.editOptionsRecyclerView.setLayoutManager(editOptionsLayoutManager);
-        EditOptionsAdapter editOptionsAdapter = new EditOptionsAdapter(getActivity(), trimConstraintLayout, effectConstraintLayout, formatConstraintLayout, awesomeVideoView, waitingForConversionListener, presenter);
+        EditOptionsAdapter editOptionsAdapter = new EditOptionsAdapter(getActivity(), trimConstraintLayout, effectConstraintLayout, formatConstraintLayout, awesomeVideoView,  presenter);
         this.editOptionsRecyclerView.setAdapter(editOptionsAdapter);
 
         this.videoTrimmerView = (VideoTrimmerView) findView(R.id.videoTrimmerView);  // <--
@@ -170,7 +171,6 @@ public class VideoEditorFragment2 extends Fragment implements VideoEditorContrac
             }
         };
         this.awesomeVideoView.setOnSizeChangeListener(avvOnSizeChangeListener);
-        this.waitingConstraintLayout = (ConstraintLayout) findView(R.id.waitingConstraintLayout);
     }
 
     @Override
@@ -199,15 +199,10 @@ public class VideoEditorFragment2 extends Fragment implements VideoEditorContrac
 //        }
     }
 
-    @Override
-    public boolean isWaitingForVideoConversion() {
-        return (waitingConstraintLayout.getVisibility()==View.VISIBLE); // todo: for now I am keeping this. If necessary I'll change the logic
-    }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(isWaitingForVideoConversion()){  return; }
             int vid = v.getId();
 
             if(vid== kontinue.getId()) {
@@ -293,6 +288,26 @@ public class VideoEditorFragment2 extends Fragment implements VideoEditorContrac
 
     @Override
     public AwesomeVideoView getAwesomeVideoView() { return this.awesomeVideoView; }
+    public void setOnCallBack(CallBack onCallBack) {
+        this.onCallBack = onCallBack;
+    }
+
+    @Override
+    public CallBack getOnCallBack() { return onCallBack; }
+
+    @Override
+    public void startWaitingFragment() {
+        FragmentManager fm = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+        loadFragment(fm, R.id.baseFrame, new WaitingFragment(), WaitingFragment.TAG);
+    }
+
+    @Override
+    public void stopWaitingFragment() {
+        FragmentManager fm = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+        WaitingFragment waitingFragment = (WaitingFragment) fm.findFragmentByTag(WaitingFragment.TAG);
+        if(waitingFragment == null) { return;   }
+        Objects.requireNonNull(getActivity()).getSupportFragmentManager().popBackStack();
+    }
 
     private void showDuration(long startMillis, long endMillis) {
         long duration = (endMillis - startMillis) / 1000L;
@@ -309,6 +324,20 @@ public class VideoEditorFragment2 extends Fragment implements VideoEditorContrac
         presenter.exoPlayer.prepare(clippingMediaSource);
     }
 
-    @Override
-    public ConstraintLayout getWaitingConstraintLayout() { return waitingConstraintLayout; }
+    public void loadFragment(FragmentManager fragmentManager, int flToMountOnResId, Fragment fragment, String tag) {
+        fragmentManager.beginTransaction()
+                .setCustomAnimations(
+                        android.R.animator.fade_in,
+                        android.R.animator.fade_out,
+                        android.R.animator.fade_in,
+                        android.R.animator.fade_out
+                )
+                .add(flToMountOnResId, fragment , tag)
+                .addToBackStack(tag)
+                .commit();
+    }
+
+    public interface CallBack {
+        void onVideoConversionSuccess(String destPath);
+    }
 }

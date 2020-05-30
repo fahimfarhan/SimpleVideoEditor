@@ -37,11 +37,10 @@ public class EditOptionsAdapter extends RecyclerView.Adapter<EditOptionsAdapter.
     private ConstraintLayout effectConstraintLayout;
     private ConstraintLayout formatConstraintLayout;
     private AwesomeVideoView awesomeVideoView;
-    private WaitingForConversionListener listener;
     private VideoEditorPresenter presenter;
 
     public EditOptionsAdapter(Activity activity, ConstraintLayout trimConstraintLayout, ConstraintLayout effectConstraintLayout,
-                              ConstraintLayout formatConstraintLayout, AwesomeVideoView awesomeVideoView, WaitingForConversionListener listener, VideoEditorPresenter presenter) {
+                              ConstraintLayout formatConstraintLayout, AwesomeVideoView awesomeVideoView, VideoEditorPresenter presenter) {
         this.activity = activity;
         this.selectedBackground = ContextCompat.getDrawable(activity, R.drawable.round_edit_option_selected);
         this.notSelectedBackground = ContextCompat.getDrawable(activity, R.drawable.round_edit_option_notselected);
@@ -49,7 +48,6 @@ public class EditOptionsAdapter extends RecyclerView.Adapter<EditOptionsAdapter.
         this.effectConstraintLayout = effectConstraintLayout;
         this.formatConstraintLayout = formatConstraintLayout;
         this.awesomeVideoView = awesomeVideoView;
-        this.listener = listener;
         this.presenter = presenter;
     }
 
@@ -67,7 +65,6 @@ public class EditOptionsAdapter extends RecyclerView.Adapter<EditOptionsAdapter.
         holder.optionLogo.setImageDrawable(drawable);
         holder.optionName.setText(optionNames[position]);
         holder.optionLogo.setOnClickListener( v -> {
-            if(listener.isWaitingForConversion()){  return; }
             toogleColor(holder, position);
             myOnClick(position);
         });
@@ -128,7 +125,4 @@ public class EditOptionsAdapter extends RecyclerView.Adapter<EditOptionsAdapter.
         }
     }
 
-    public interface WaitingForConversionListener{
-        boolean isWaitingForConversion();
-    }
 }
