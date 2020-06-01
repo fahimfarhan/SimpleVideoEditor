@@ -85,7 +85,7 @@ Finally, you do this in java:
         mp4Composer.start();                
 ```
 # Example:
-[I'm trying to crop a square portion of 300X300 pixel in a 720x1280 video with offset in Y.](https://github.com/MasayukiSuda/Mp4Composer-android/issues/36#issuecomment-452312234)
+<!-- [I'm trying to crop a square portion of 300X300 pixel in a 720x1280 video with offset in Y.](https://github.com/MasayukiSuda/Mp4Composer-android/issues/36#issuecomment-452312234)
 720x1280 input video so width = 720 pixel, height = 1280 pixel (I'm not sure about this notation, might be wrong. In that case toogle the values)
 ```
         FillModeCustomItem fillModeCustomItem = new FillModeCustomItem(
@@ -106,7 +106,9 @@ Finally, you do this in java:
                 .customFillMode(fillModeCustomItem);
         // todo: other inputs according to your requirements
         mp4Composer.start();                
-```
+``` -->
+
+Please check out [VideoEditorPresenter.java#L83](https://github.com/fahimfarhan/SimpleVideoEditor/blob/61ef2c4f580518dfc349a46ba96240fba54e0be9/app/src/main/java/com/fahimfarhan/simplevideoeditor/videoeditor/VideoEditorPresenter.java#L83), it shows my implementation.
 
 You can also download my project, run it and try to have a better understanding. 
 If you have any questions, feel free to ask me and I'll
