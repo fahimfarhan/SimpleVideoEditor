@@ -157,7 +157,9 @@ public class VideoEditorPresenter implements VideoEditorContract.Presenter {
                 .fillMode(FillMode.CUSTOM)
                 .customFillMode(fillModeCustomItem);
         if(videoEditModel.composerGlFilter != null){
-                mp4Composer.filter(glFilterGroup);
+                mp4Composer.filter(videoEditModel.composerGlFilter);
+        }else{
+            mp4Composer.filter(glFilterGroup);
         }
         mp4Composer.trim(videoEditModel.mStartTimeMs, videoEditModel.mEndTimeMs)
                 .listener(new Mp4Composer.Listener() {
