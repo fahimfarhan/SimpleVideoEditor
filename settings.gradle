@@ -1,2 +1,4 @@
-rootProject.name='SImpleVideoEditor'
+include ':start'
 include ':app'
+project(':app').projectDir = new File(settingsDir, './app')
+rootProject.name='SImpleVideoEditor'
