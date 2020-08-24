@@ -1,8 +1,12 @@
 # SimpleVideoEditor
-Help were taken from these repositories:
+
+## Acknowledgement
+Special thanks to:
 1. [MasayukiSuda/Mp4Composer-android](https://github.com/MasayukiSuda/Mp4Composer-android)
 2. [cats-oss/android-gpuimage](https://github.com/cats-oss/android-gpuimage)
 
+## todo:
+1. study some photo editors like [burhanrashid52/PhotoEditor](https://github.com/burhanrashid52/PhotoEditor), and implement text, stickers etc support
 # Crop Explanation
 The crop mechanism was not well documented in the Mp4Composer-android library,
  so I had to go through a lot of trials and errors
