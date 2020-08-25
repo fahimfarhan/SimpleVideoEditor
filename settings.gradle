@@ -1,3 +1,4 @@
+include ':startjitpack'
 include ':start'
 include ':app'
 project(':app').projectDir = new File(settingsDir, './app')

@@ -5,6 +5,59 @@ Special thanks to:
 1. [MasayukiSuda/Mp4Composer-android](https://github.com/MasayukiSuda/Mp4Composer-android)
 2. [cats-oss/android-gpuimage](https://github.com/cats-oss/android-gpuimage)
 
+## :tada: The library is now vailable via jitpack.io :rocket:
+**Warning** Please note that I should change some file names, variables in strings.xml etc. Otherwise they may conflict with user's app resulting
+unprecedented problems. Sorry for inconvenience.
+
+To import the library:
+Add it in your root build.gradle at the end of repositories:
+```
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"    // <-- ADD THIS LINE
+    }
+}
+allprojects {
+		repositories {
+			// ...
+			maven { url 'https://www.jitpack.io' }  // <-- ADD THIS LINE
+		}
+	}
+```
+Next, open your app's `build.gradle` file, and add this at the top:
+```
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+```
+And in the android block, add this:
+```
+android{
+    // other configs
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+        // other configs
+}
+```
+Finally, add the dependency
+```
+dependencies {
+        implementation 'com.github.fahimfarhan:SimpleVideoEditor:v1.0'
+}
+```
+That's it!
+
 ## todo:
 1. study some photo editors like [burhanrashid52/PhotoEditor](https://github.com/burhanrashid52/PhotoEditor), and implement text, stickers etc support
 # Crop Explanation
