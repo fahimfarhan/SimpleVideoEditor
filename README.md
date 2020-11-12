@@ -5,7 +5,7 @@ Special thanks to:
 1. [MasayukiSuda/Mp4Composer-android](https://github.com/MasayukiSuda/Mp4Composer-android)
 2. [cats-oss/android-gpuimage](https://github.com/cats-oss/android-gpuimage)
 
-## :tada: The library is now vailable via jitpack.io :rocket:
+## :tada: The library is now available via jitpack.io :rocket:
 **Warning** Please note that I should change some file names, variables in strings.xml etc. Otherwise they may conflict with user's app resulting
 unprecedented problems. Sorry for inconvenience.
 
