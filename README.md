@@ -11,7 +11,7 @@ unprecedented problems. Sorry for inconvenience.
 
 To import the library:
 Add it in your root build.gradle at the end of repositories:
-```
+```groovy
 buildscript {
     repositories {
         google()
@@ -30,13 +30,13 @@ allprojects {
 	}
 ```
 Next, open your app's `build.gradle` file, and add this at the top:
-```
+```groovy
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 ```
 And in the android block, add this:
-```
+```groovy
 android{
     // other configs
     compileOptions {
@@ -51,7 +51,7 @@ android{
 }
 ```
 Finally, add the dependency
-```
+```groovy
 dependencies {
         implementation 'com.github.fahimfarhan:SimpleVideoEditor:v1.0'
 }
@@ -113,7 +113,7 @@ at the time of writing.
 Since I am not rotating, my rotation is zero. So `rotation = 0`
 
 Now that we have all the input parameters ready, we can create a `FillModeCustomItem` object like this:
-```
+```java
         FillModeCustomItem fillModeCustomItem = new FillModeCustomItem(
                 scalingFactor,
                 rotation,
@@ -132,7 +132,7 @@ of  `outputVideoWidthPx`, `outputVideoHeightPx` centered at `(x0, y0)`, then zoo
 frame (using that `scalingFactor`) and translates `translationX`, `translationY` amount to track the actual crop area.
 
 Finally, you do this in java:
-```
+```java
         mp4Composer = new Mp4Composer(selectedVideoUri, destPath, activity, mylogger);
         mp4Composer
                 .size(outputVideoWidthPx, outputVideoHeightPx) // fake it till you make it
